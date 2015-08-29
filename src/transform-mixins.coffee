@@ -2,6 +2,7 @@
 
 _ = require('lodash')
 merge = require('merge')
+React = require('react')
 
 
 
@@ -93,7 +94,7 @@ transform = (styleObject, customFuncs, parent) ->
   for key, value of styleObject
 
     # If its an object
-    if _.isObject(value) and not _.isArray(value)
+    if _.isObject(value) and not _.isArray(value) and not React.isValidElement(value)
       # Lets go ahead and run again
       obj[key] = transform(value, customFuncs, styleObject)
 
